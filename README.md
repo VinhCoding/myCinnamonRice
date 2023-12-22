@@ -34,7 +34,7 @@ Vinh
 ## Installation -- Work in progress !!!
 
 ```bash
-git clone https://github.com/VinhCoding/myDebianRice.git
+git clone https://github.com/VinhCoding/myCinnamonRice.git
 ```
 
 ## Contributing
