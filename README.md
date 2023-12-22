@@ -1,4 +1,4 @@
-# Vinh's Debian Rice - WORK IN PROGRESS
+# Vinh's Cinnamon Rice - WORK IN PROGRESS
 ![Screenshot1](https://i.imgur.com/kHpVghw.png)
 ![Screenshot2](https://i.imgur.com/Fglf4Ep.png)
 
@@ -37,6 +37,13 @@ Vinh
 git clone https://github.com/VinhCoding/myCinnamonRice.git
 ```
 
+## TODO
+- [ ]  Recheck Git's Stability
+- [ ]  Auto Install Dependencies Script
+- [ ]  Auto Install Colorscheme / Theme Sciprt
+- [ ]  Auto Apply Colorscheme / Theme Sciprt
+- [ ]  Clean Up!!!
+
 ## Contributing
 ```
 Pull requests are welcome. For major changes, please open an issue first
@@ -44,5 +51,4 @@ to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 ```
-
 
