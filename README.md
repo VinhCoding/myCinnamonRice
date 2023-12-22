@@ -25,6 +25,7 @@ Vinh
 + Main Color Scheme: [GruvBox](https://github.com/morhetz/gruvbox)
 + Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
 + Shell: [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
++ Shell Theme: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 + File Manager: [Ranger](https://github.com/ranger/ranger)
 + File Editor: [LunarVim](https://github.com/LunarVim/LunarVim) 
 + System Monitor: [Btop](https://github.com/aristocratos/bpytop)
