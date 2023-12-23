@@ -31,8 +31,8 @@ case $yn in
     sudo ln -s /squashfs-root/AppRun /usr/bin/nvim;
 
     echo 'Install Dependencies for LunarVim: ';
-    sudo apt install -y git make python-is-python3 pipx nodejs npm; 
-   
+    sudo apt install -y git make python-is-python3 nodejs npm;
+
     echo 'Install Dependencies for LunarVim: Lazygit ';
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*');
     curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz";
@@ -42,12 +42,20 @@ case $yn in
     echo 'Install Dependencies For LunarVim: Rust Language';
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
 
+
     echo 'Install Dependencies For LunarVim: Make NPM Global';
     mkdir ~/.npm-global;
     npm config set prefix '~/.npm-global';
     export PATH=~/.npm-global/bin:$PATH;
     source ~/.profile;
     npm install -g jshint;
+
+    echo 'Install Dependencies For LunarVim: Install Python';
+    python -m venv ~/.myenv;
+    echo 'export PYTHONPATH=""; export PYTHONHOME=""; source ~/.myenv/bin/activate; alias reload="source ~/.bashrc"' >> ~/.bashrc;
+    reload;
+    pip install pynvim;
+
 
     break;;
 
