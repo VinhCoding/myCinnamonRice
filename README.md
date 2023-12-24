@@ -38,10 +38,10 @@ git clone https://github.com/VinhCoding/myCinnamonRice.git
 ```
 
 ## TODO
-- [ ]  Recheck Git's Stability
 - [ ]  Auto Install Dependencies Script
 - [ ]  Auto Install Colorscheme / Theme Sciprt
 - [ ]  Auto Apply Colorscheme / Theme Sciprt
+- [ ]  Recheck Git's Stability
 - [ ]  Clean Up!!!
 
 ## Contributing

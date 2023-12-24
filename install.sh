@@ -22,15 +22,21 @@ read -p "$(echo -e "Do you want to proceed? ( ${colorG}[Y]es${colorN} / ${colorR
 case $yn in 
 	
   [yY] ) echo 'Install LunarVim - BEGIN: '; 
-
-    echo 'Install Update-To-Date Neovim: ';
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage;
-    chmod u+x nvim.appimage;
-    ./nvim.appimage;
-    sudo mv squashfs-root /;
-    sudo ln -s /squashfs-root/AppRun /usr/bin/nvim;
-
+    
     echo 'Install Dependencies for LunarVim: ';
+
+    if ! command -v nvim &> /dev/null; then
+      echo "Neovim is not installed. Please install Neovim before proceeding."
+    else
+    echo 'Install Update-To-Date Neovim: ';
+      curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage;
+      chmod u+x nvim.appimage;
+      ./nvim.appimage --appimage-extract
+      ./squashfs-root/AppRun --version
+      sudo mv squashfs-root /;
+      sudo ln -s /squashfs-root/AppRun /usr/bin/nvim;
+    fi
+
     sudo apt install -y git make python-is-python3 nodejs npm;
 
     echo 'Install Dependencies for LunarVim: Lazygit ';
