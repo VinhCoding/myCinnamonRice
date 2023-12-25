@@ -55,10 +55,11 @@ case $yn in
     python -m venv ~/.myenv;
     echo 'export PYTHONPATH=""' >> ~/.bashrc;
     echo "source ~/.myenv/bin/activate" >> ~/.bashrc;
-    echo "";
-    echo 'alias reload-bash="source ~/.bashrc"' >> ~/.bashrc;
-    
+    exit_myenv="source ~/.myenv/bin/activate";
+    sed -i "/$exit_myenv/d" ~/.bashrc
+
     source ~/.bashrc;
+    echo 'alias reload-bash="source ~/.bashrc"' >> ~/.bashrc;
     reload-bash;
     pip install pynvim;
 
