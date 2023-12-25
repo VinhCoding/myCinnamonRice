@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set +o history
+
 # Bash Setup
 #colorY='\033[1;32m'
 #colorB='\033[0;34m'
@@ -75,8 +77,8 @@ case $yn in
     echo "source ~/.myenv/bin/activate" >> ~/.bashrc;
     pip install pynvim;
     
-    source ~/.bashrc;
     echo 'alias bashreload="source ~/.bashrc"' >> ~/.bashrc;
+    source ~/.bashrc;
     bashreload;
 
     echo -e "\n${GREEN}Install LunarVim: ${NC}\n";
@@ -102,3 +104,5 @@ case $yn in
 esac
 
 done
+
+set -o history
