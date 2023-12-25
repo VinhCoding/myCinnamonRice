@@ -4,10 +4,9 @@
 #colorY='\033[1;32m'
 #colorB='\033[0;34m'
 
-colorN='\033[0m' 
-colorR='\033[0;31m'
-colorG='\033[0;32m'
-
+NC='\033[0m' 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
 # Disclaimer
 echo "Disclaimer: By installing the contents of this GitHub repository (https://github.com/VinhCoding/myCinnamonRice), you acknowledge and agree that there is a possibility of harm to your computer system."
 echo "The owner of this repository does not take any responsibility for any damages, losses, or adverse effects that may occur as a result of installing or using the provided files. It is your sole responsibility to ensure the safety and integrity of your computer system."
@@ -18,50 +17,48 @@ sleep 1
 # Dependencies Installer
 while true; do
 
-read -r -p "$(echo -e "Do you want to proceed? ( ${colorG}[Y]es${colorN} / ${colorR}[N]o${colorN} ): ")" yn
+read -r -p "$(echo -e "Do you want to proceed? ( ${GREEN}[Y]${NC}es / ${RED}[N]${NC}o ): ")" yn
 
 case $yn in 
 	
-  [yY] ) echo 'Install LunarVim - BEGIN: '; 
-    
-    echo 'Install Dependencies for LunarVim: ';
-
-    if ! command -v nvim &> /dev/null; then
-      echo "Neovim is not installed. Please install Neovim before proceeding.";
-      exit 1;
-    else
-    echo 'Install Update-To-Date Neovim: ';
+  [yY] )  echo -e "\n${GREEN}Install Dependencies for LunarVim: ${NC}\n";
+   
+    echo -e "\n${RED}Install Dependencies for LunarVim: Neovim ${NC}\n";
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage;
       chmod u+x nvim.appimage;
       ./nvim.appimage --appimage-extract
       ./squashfs-root/AppRun --version
       sudo mv squashfs-root /;
       sudo ln -s /squashfs-root/AppRun /usr/bin/nvim;
-    fi
 
-    sudo apt install -y git make python-is-python3 python3-pip nodejs npm;
+    echo -e "\n${GREEN}Install Dependencies for LunarVim: Git, Make, Python, Pip, Python-Venv, NodeJS and NPM ${NC}\n";
+    sudo apt install -y git make python-is-python3 python3-pip python3-venv nodejs npm;
 
-    echo 'Install Dependencies for LunarVim: Lazygit ';
+    echo -e "\n${GREEN}Install Dependencies for LunarVim: Lazygit ${NC}\n";
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*');
     curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz";
     tar xf lazygit.tar.gz lazygit;
     sudo install lazygit /usr/local/bin;
 
-    echo 'Install Dependencies For LunarVim: Rust Language';
+    echo -e "\n${GREEN}Install Dependencies for LunarVim: Rust Language ${NC}\n";
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
 
 
-    echo 'Install Dependencies For LunarVim: Make NPM Global';
+    echo -e "\n${GREEN}Install Dependencies for LunarVim: Make NPM Global ${NC}\n";
     mkdir ~/.npm-global;
-    npm config set prefix '~/.npm-global';
+    npm config set prefix "$HOME/.npm-global";
     export PATH=~/.npm-global/bin:$PATH;
     source ~/.profile;
     npm install -g jshint;
 
-    echo 'Install Dependencies For LunarVim: Install Python';
+    echo -e "\n${GREEN}Install Dependencies for LunarVim: Make Python-Pip Global via VENV ${NC}\n";
     python -m venv ~/.myenv;
-    echo 'export PYTHONPATH=""; export PYTHONHOME=""; source ~/.myenv/bin/activate; alias reload="source ~/.bashrc"' >> ~/.bashrc;
-    reload;
+    echo 'export PYTHONPATH=""' >> ~/.bashrc;
+    echo 'source ~/.myenv/bin/activate' >> ~/.bashrc;
+    echo 'alias reload-bash="source ~/.bashrc"' >> ~/.bashrc;
+    
+    source ~/.bashrc;
+    reload-bash;
     pip install pynvim;
 
 
