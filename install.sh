@@ -25,14 +25,21 @@ case $yn in
 	
   [yY] )  
     echo -e "\n${GREEN}Backups Neovim, LunarVim, Bashrc and Zshrc if exist: ${NC}\n";
-    mv -v ~/.config/nvim ~/.config/_bkp.nvim
-    mv -v ~/.local/share/nvim ~/.local/share/_bkp.nvim
-    mv -v ~/.config/lvim ~/.config/_bkp.lvim
-    mv -v ~/.bashrc ~/.bashrc_bkp
-    mv -v ~/.zshrc ~/.zshrc_bkp 
-    mv -v ~/.profile ~/.profile_bkp
+    
+    mv -v ~/.config/nvim ~/.config/_old.nvim
+    mv -v ~/.local/share/nvim ~/.local/share/_old.nvim
+    
+    mv -v ~/.config/lvim ~/.config/_old.lvim
+    
+    mv -v ~/.bashrc ~/.bashrc_old
+    cp /etc/skel/.bashrc ~/
+    
+    mv -v ~/.zshrc ~/.zshrc_old
+    cp /etc/zsh/zshrc ~/.zshrc
+    
+    mv -v ~/.profile ~/.profile_old
 
-    echo -e "\n${GREEN}Install Dependencies for LunarVim: ${NC}\n";
+    echo -e "\n${GREEN}Begin Install Dependencies for LunarVim: ${NC}\n";
     
     echo -e "\n${GREEN}Install Dependencies for LunarVim: Neovim ${NC}\n";
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage;
