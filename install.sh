@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Bash Setup
+#colorY='\033[1;32m'
+#colorB='\033[0;34m'
+
 colorN='\033[0m' 
 colorR='\033[0;31m'
 colorG='\033[0;32m'
-colorY='\033[1;32m'
-colorB='\033[0;34m'
 
 # Disclaimer
 echo "Disclaimer: By installing the contents of this GitHub repository (https://github.com/VinhCoding/myCinnamonRice), you acknowledge and agree that there is a possibility of harm to your computer system."
@@ -17,7 +18,7 @@ sleep 1
 # Dependencies Installer
 while true; do
 
-read -p "$(echo -e "Do you want to proceed? ( ${colorG}[Y]es${colorN} / ${colorR}[N]o${colorN} ): ")" yn
+read -r -p "$(echo -e "Do you want to proceed? ( ${colorG}[Y]es${colorN} / ${colorR}[N]o${colorN} ): ")" yn
 
 case $yn in 
 	
@@ -26,7 +27,8 @@ case $yn in
     echo 'Install Dependencies for LunarVim: ';
 
     if ! command -v nvim &> /dev/null; then
-      echo "Neovim is not installed. Please install Neovim before proceeding."
+      echo "Neovim is not installed. Please install Neovim before proceeding.";
+      exit 1;
     else
     echo 'Install Update-To-Date Neovim: ';
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage;
@@ -37,7 +39,7 @@ case $yn in
       sudo ln -s /squashfs-root/AppRun /usr/bin/nvim;
     fi
 
-    sudo apt install -y git make python-is-python3 nodejs npm;
+    sudo apt install -y git make python-is-python3 python3-pip nodejs npm;
 
     echo 'Install Dependencies for LunarVim: Lazygit ';
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*');
