@@ -55,13 +55,14 @@ case $yn in
     python -m venv ~/.myenv;
     echo 'export PYTHONPATH=""' >> ~/.bashrc;
     echo "source ~/.myenv/bin/activate" >> ~/.bashrc;
-    exit_myenv="source ~/.myenv/bin/activate";
-    sed -i "/$exit_myenv/d" ~/.bashrc
-
-    source ~/.bashrc;
-    echo 'alias reload-bash="source ~/.bashrc"' >> ~/.bashrc;
-    reload-bash;
     pip install pynvim;
+    
+    source ~/.bashrc;
+    echo 'alias bashreload="source ~/.bashrc"' >> ~/.bashrc;
+    bashreload;
+
+    sed -i '/source ~\/\.myenv\/bin\/activate/d' ~/.bashrc
+    
 
     echo -e "\n${GREEN}Install LunarVim: ${NC}\n";
     LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
@@ -76,9 +77,4 @@ case $yn in
 
 esac
 
-echo $? # Get exit status of a process in bash
-
 done
-
-
-
