@@ -23,7 +23,7 @@ case $yn in
 	
   [yY] )  echo -e "\n${GREEN}Install Dependencies for LunarVim: ${NC}\n";
    
-    echo -e "\n${RED}Install Dependencies for LunarVim: Neovim ${NC}\n";
+    echo -e "\n${GREEN}Install Dependencies for LunarVim: Neovim ${NC}\n";
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage;
       chmod u+x nvim.appimage;
       ./nvim.appimage --appimage-extract
@@ -51,17 +51,19 @@ case $yn in
     source ~/.profile;
     npm install -g jshint;
 
-    echo -e "\n${GREEN}Install Dependencies for LunarVim: Make Python-Pip Global via VENV ${NC}\n";
+    echo -e "\n${GREEN}Install Dependencies for LunarVim: Make Python-Pip Global via VENV + Install PyNvim ${NC}\n";
     python -m venv ~/.myenv;
     echo 'export PYTHONPATH=""' >> ~/.bashrc;
-    echo 'source ~/.myenv/bin/activate' >> ~/.bashrc;
+    echo "source ~/.myenv/bin/activate" >> ~/.bashrc;
+    echo "";
     echo 'alias reload-bash="source ~/.bashrc"' >> ~/.bashrc;
     
     source ~/.bashrc;
     reload-bash;
     pip install pynvim;
 
-
+    echo -e "\n${GREEN}Install LunarVim: ${NC}\n";
+    LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
     break;;
 
 

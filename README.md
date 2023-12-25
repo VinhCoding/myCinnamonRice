@@ -1,4 +1,4 @@
-# Vinh's Cinnamon Rice - DO NOT USE ANYTHING IN THIS BRANCH, Very Dangerous >;\ !!!!
+# DO NOT USE ANYTHING IN THIS BRANCH, Very Dangerous >;\ !!!!
 
 # Vinh's Cinnamon Rice - WORK IN PROGRESS
 ![Screenshot1](https://i.imgur.com/kHpVghw.png)
