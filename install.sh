@@ -70,14 +70,20 @@ case $yn in
     
     source ~/.bashrc;
     echo 'alias bashreload="source ~/.bashrc"' >> ~/.bashrc;
-
-    sed -i '/source ~\/\.myenv\/bin\/activate/d' ~/.bashrc
-
     bashreload;
 
     echo -e "\n${GREEN}Install LunarVim: ${NC}\n";
     LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+    
+    sed -i '/source ~\/\.myenv\/bin\/activate/d' ~/.bashrc
+    bashreload;
+    
+
     break;;
+
+
+
+
 
 
 # If [No] or If Invalid Response
