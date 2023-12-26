@@ -106,8 +106,6 @@ if command -v kitty &> /dev/null
     echo "Kitty terminal installed successfully."
 fi
 
-    [ -d "./fonts" ] && mv "./fonts" "$HOME/" && echo "Fonts Directory moved and renamed successfully." || echo "Source directory './fonts' not found.";
-
     [ -d "./config/kitty" ] && mv "./config/kitty" "$HOME/.config/" && echo "Ranger Directory moved and renamed successfully." || echo "Source directory './config/kitty' not found.";
 
     # Change Default User's Terminal to Kitty
