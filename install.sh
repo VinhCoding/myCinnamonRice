@@ -5,25 +5,24 @@ set +o history
 # Bash Setup
 #colorY='\033[1;32m'
 #colorB='\033[0;34m'
+wrap_text() {
+    echo "$1" | fold -s -w 80
+}
 
 NC='\033[0m' 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 
-# Check if the Linux distribution is Debian or Linux Mint
 distro=$(lsb_release -si)
+desktop=$(echo "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]') 
 
-if [[ $distro != "Debian" && $distro != "LinuxMint" ]]; then
-    echo "This script is intended for Debian or Linux Mint distributions only. Exiting..."
+if [[ "$distro" != "Debian" && "$distro" != "Linuxmint" && "$desktop" != "cinnamon" ]]; then
+    echo "This script is intended for Debian, Linux Mint, or Cinnamon desktop environments only. Exiting..."
     exit 1
 fi
 
-
 # Disclaimer
-echo "Disclaimer: By installing the contents of this GitHub repository (https://github.com/VinhCoding/myCinnamonRice), you acknowledge and agree that there is a possibility of harm to your computer system."
-echo "The owner of this repository does not take any responsibility for any damages, losses, or adverse effects that may occur as a result of installing or using the provided files. It is your sole responsibility to ensure the safety and integrity of your computer system."
-echo "Prior to installation, we strongly recommend taking appropriate precautions, including creating backups and verifying the compatibility of the files with your system. Install and use the files at your own risk."
-echo ""
+wrap_text "Disclaimer: By installing the contents of this GitHub repository (https://github.com/VinhCoding/myCinnamonRice), you acknowledge and agree that there is a possibility of harm to your computer system. The owner of this repository does not take any responsibility for any damages, losses, or adverse effects that may occur as a result of installing or using the provided files. It is your sole responsibility to ensure the safety and integrity of your computer system. Prior to installation, we strongly recommend taking appropriate precautions, including creating backups and verifying the compatibility of the files with your system. Install and use the files at your own risk."
 sleep 1 
 
 echo "Please Read The README.md for more information about stuff this script will do, Thank you!."
