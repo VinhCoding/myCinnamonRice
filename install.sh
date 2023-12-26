@@ -9,6 +9,16 @@ set +o history
 NC='\033[0m' 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+
+# Check if the Linux distribution is Debian or Linux Mint
+distro=$(lsb_release -si)
+
+if [[ $distro != "Debian" && $distro != "LinuxMint" ]]; then
+    echo "This script is intended for Debian or Linux Mint distributions only. Exiting..."
+    exit 1
+fi
+
+
 # Disclaimer
 echo "Disclaimer: By installing the contents of this GitHub repository (https://github.com/VinhCoding/myCinnamonRice), you acknowledge and agree that there is a possibility of harm to your computer system."
 echo "The owner of this repository does not take any responsibility for any damages, losses, or adverse effects that may occur as a result of installing or using the provided files. It is your sole responsibility to ensure the safety and integrity of your computer system."
@@ -85,7 +95,7 @@ case $yn in
     LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
     
     sed -i '/source ~\/\.myenv\/bin\/activate/d' ~/.bashrc
-    bashreload;
+    source ~/.bashrc;
     
 
     break;;
