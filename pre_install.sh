@@ -60,7 +60,7 @@ if command -v ranger &> /dev/null
   then
     echo "Ranger file manager found. Creating backup..."
     # Create a backup directory if it doesn't exist
-    ranger_backup_dir="$HOME/ranger_backup"
+    ranger_backup_dir="$HOME/.config/ranger_backup"
     mkdir -p "$ranger_backup_dir"
     
     # Backup the existing Ranger configuration files
@@ -76,15 +76,14 @@ if command -v ranger &> /dev/null
     echo "Ranger file manager installed successfully."
 fi
 
-[ -d "./config/ranger" ] && mv "./config/ranger" "$HOME/.config/ranger" && echo "Ranger Directory moved and renamed successfully." || echo "Source directory './config/ranger' not found.";
-
+[ -d "./config/ranger" ] && mv "./config/ranger" "$HOME/.config/" && echo "Ranger Directory moved and renamed successfully." || echo "Source directory './config/ranger' not found.";
 
 # Check if Kitty terminal exists and install
 if command -v kitty &> /dev/null
   then
     echo "Kitty terminal found. Creating backup..."
     # Create a backup directory if it doesn't exist
-    kitty_backup_dir="$HOME/kitty_backup"
+    kitty_backup_dir="$HOME/.config/kitty_backup"
     mkdir -p "$kitty_backup_dir"
     
     # Backup the existing Kitty configuration files
@@ -107,12 +106,12 @@ if command -v kitty &> /dev/null
     echo "Kitty terminal installed successfully."
 fi
 
-    [ -d "./fonts" ] && mv "./fonts" "$HOME/.fonts" && echo "Fonts Directory moved and renamed successfully." || echo "Source directory './fonts' not found.";
+    [ -d "./fonts" ] && mv "./fonts" "$HOME/" && echo "Fonts Directory moved and renamed successfully." || echo "Source directory './fonts' not found.";
 
-    [ -d "./config/kitty" ] && mv "./config/kitty" "$HOME/.config/kitty" && echo "Ranger Directory moved and renamed successfully." || echo "Source directory './config/kitty' not found.";
+    [ -d "./config/kitty" ] && mv "./config/kitty" "$HOME/.config/" && echo "Ranger Directory moved and renamed successfully." || echo "Source directory './config/kitty' not found.";
 
     # Change Default User's Terminal to Kitty
-    dconf write /org/cinnamon/desktop/applications/terminal/exec "'$HOME/.local/kitty.app/bin/kitty'"
+    dconf write /org/cinnamon/desktop/applications/terminal/bexec "'$HOME/.local/kitty.app/bin/kitty'"
 
 break;;
 
