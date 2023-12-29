@@ -1,12 +1,13 @@
-reload('user.plugins')
-reload('user.colorscheme')
-reload('user.options')
-reload('user.keymaps')
-reload('user.which-key')
-reload('user.statusline')
-reload('user.lsp')
-reload('user.dashboard')
-reload('user.autocmds')
+reload("user.plugins")
+reload("user.colorscheme")
+
+-- reload('user.options')
+-- reload('user.keymaps')
+-- reload('user.which-key')
+-- reload('user.statusline')
+-- reload('user.lsp')
+-- reload('user.dashboard')
+-- reload('user.autocmds')
 -- reload('user.lsp-status')
 
 -- Verk Vim.Config : BEGIN
@@ -15,6 +16,7 @@ vim.opt.relativenumber = true
 -- Verk Vim.Config : END
 
 -- Verk UI.Config : BEGIN
+lvim.colorscheme =  "gruvbox"
 vim.opt.nu = true
 vim.relativenumber = true
 vim.opt.hlsearch = false
